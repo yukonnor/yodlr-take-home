@@ -5,7 +5,6 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "serve": "node app.js",
         "start": "node index.js"
     },
     "dependencies": {

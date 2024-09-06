@@ -3,17 +3,12 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
     plugins: [react()],
-    build: {
-        outDir: "public", // Output directory for the build
-        rollupOptions: {
-            input: "./src/main.jsx",
-        },
-    },
+    publicDir: "public",
     server: {
-        port: 3000,
+        port: 5173,
         proxy: {
             // Proxy any API requests to the NodeJS server during development
-            "/api": "http://localhost:3000",
+            "/users": "http://localhost:3000",
         },
     },
 });

@@ -8,16 +8,10 @@ import Register from "./Register";
 import Admin from "./Admin";
 
 function App() {
-    const [user, setUser] = useLocalStorage("user", {});
-
-    if (isLoading) {
-        return <p>Loading &hellip;</p>;
-    }
-
     return (
         <div className="App">
             <BrowserRouter>
-                <NavBar user={user} setUser={setUser} />
+                <NavBar />
                 <main>
                     <Routes>
                         <Route exact path="/" element={<Home />} />
