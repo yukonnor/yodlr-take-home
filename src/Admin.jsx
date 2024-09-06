@@ -21,25 +21,32 @@ function Admin() {
         <Container fluid>
             <Row>
                 <Col xs={12} sm={2} className="bg-light sidebar">
-                    <Nav className="flex-column">
-                        <Nav.Link
-                            onClick={() => handleNavClick("Home")}
-                            active={activeContent === "Home"}
-                        >
-                            Home
-                        </Nav.Link>
-                        <Nav.Link
-                            onClick={() => handleNavClick("Users")}
-                            active={activeContent === "Users"}
-                        >
-                            Users
-                        </Nav.Link>
-                        <Nav.Link
-                            onClick={() => handleNavClick("Settings")}
-                            active={activeContent === "Settings"}
-                        >
-                            Settings
-                        </Nav.Link>
+                    <Nav variant="underline" className="flex-column">
+                        <Nav.Item>
+                            <Nav.Link
+                                onClick={() => handleNavClick("Home")}
+                                active={activeContent === "Home"}
+                                class="fw-bold"
+                            >
+                                Home
+                            </Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link
+                                onClick={() => handleNavClick("Users")}
+                                active={activeContent === "Users"}
+                            >
+                                Users
+                            </Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link
+                                onClick={() => handleNavClick("Settings")}
+                                active={activeContent === "Settings"}
+                            >
+                                Settings
+                            </Nav.Link>
+                        </Nav.Item>
                     </Nav>
                 </Col>
                 <Col xs={12} sm={10} className="main-content">
