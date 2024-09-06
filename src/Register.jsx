@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import RegisterForm from "./RegisterForm";
 
 function Register() {
     return (
         <div>
-            <h1>Register</h1>
+            <RegisterForm />
         </div>
     );
 }
