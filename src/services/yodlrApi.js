@@ -36,11 +36,12 @@ class YodlrApi {
     // Individual API routes
 
     /** Register user
-     *  accepts: tbd
-     *  returns: {user} */
+     *  accepts: userData { firstName, lastName, email }
+     *  returns: { id, email, firstName, lastName, state } */
 
-    static async register() {
-        //tbd
+    static async register(userData) {
+        let response = await this.request("users", userData, "post");
+        return response;
     }
 
     /** Get users

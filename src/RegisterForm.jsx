@@ -16,25 +16,24 @@ function RegisterForm() {
     const navigate = useNavigate();
 
     /* registerUser to create a user from Signup form
-    /  userObj is: { firstName, lastName, email } */
+    /  userData is: { firstName, lastName, email } */
 
-    async function registerUser(userObj) {
+    async function registerUser(userData) {
         try {
-            let response = await await YodlrApi.register(userObj);
+            let response = await YodlrApi.register(userData);
             console.log("User registered successfully:", response);
+            return response;
         } catch (error) {
             console.error("Error registering user:", error);
             // would throw error here that could be displayed to the user
+            throw error;
         }
-        if (response && response.id) {
-            setUser((user) => ({ username: userObj.username, ...response }));
-        }
-        return response;
     }
 
     /** Upon form submission, validate inputs and send input data to API. */
 
     const handleSubmit = async (event) => {
+        console.log("Form submitted...");
         event.preventDefault();
         const form = event.currentTarget;
 
@@ -42,25 +41,30 @@ function RegisterForm() {
             event.stopPropagation();
         }
 
+        // event.preventDefault();
         setValidated(true);
 
         // Get form data
         const formData = new FormData(form);
-        const data = {
+        const userData = {
             firstName: formData.get("firstName"),
             lastName: formData.get("lastName"),
             email: formData.get("email"),
         };
 
-        console.log("Form submitted:", data);
+        console.log("Form submitted:", userData);
 
-        const response = await registerUser(userObj);
+        try {
+            const response = await registerUser(userData);
 
-        // based on response, navigate home or show error
-        if (response.id) {
-            navigate("/");
-        } else {
-            setError(response.message);
+            // Based on response, navigate home or show error
+            if (response && response.id) {
+                navigate("/");
+            } else {
+                setError(response.message || "An unknown error occurred.");
+            }
+        } catch (error) {
+            setError("An error occurred during registration.");
         }
     };
 
@@ -127,9 +131,9 @@ function RegisterForm() {
                             feedbackType="invalid"
                         />
                     </Form.Group>
-                    <Button as={Col} md="6" type="submit">
-                        Sign Up
-                    </Button>
+                    <Col md="6">
+                        <Button type="submit">Sign Up</Button>
+                    </Col>
                 </Form>
             </Card.Body>
         </Card>
