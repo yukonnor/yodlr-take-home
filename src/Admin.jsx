@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import UserList from "./UserList";
+import Users from "./Users";
 
 // react-bootstrap components
 import Container from "react-bootstrap/Container";
@@ -52,7 +52,7 @@ function Admin() {
                 <Col xs={12} sm={10} className="main-content">
                     <div className="mt-3">
                         {activeContent === "Home" && <div>Placeholder Home Content</div>}
-                        {activeContent === "Users" && <UserList />}
+                        {activeContent === "Users" && <Users />}
                         {activeContent === "Settings" && <div>Placeholder Settings Content</div>}
                     </div>
                 </Col>
