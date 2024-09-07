@@ -44,6 +44,18 @@ class YodlrApi {
         return response;
     }
 
+    /** Update user
+     *  accepts: userData { id, firstName, lastName, email, state }
+     *  returns: { id, email, firstName, lastName, state }
+     *
+     *  Note: Only usecase at this time is to toggle a user's state. Consider adding a method for toggling.
+     *  Note: this is a PUT request. Include all user attributes in userData */
+
+    static async updateUser(userData) {
+        let response = await this.request(`users/${userData.id}`, userData, "put");
+        return response;
+    }
+
     /** Get users
      *  returns: [{ id, email, firstName, lastName, state }, ...] */
 
