@@ -37,3 +37,11 @@ form {
     margin-left: auto;
     margin-right: 0;
 }
+
+.toast-body {
+    text-align: left;
+}
+
+.bg-success .toast-body {
+    background-color: #ddede6;
+}

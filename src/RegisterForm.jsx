@@ -59,7 +59,9 @@ function RegisterForm() {
 
             // Based on response, navigate home or show error
             if (response && response.id) {
-                navigate("/");
+                navigate("/", {
+                    state: { message: "Successfully created user!", toastType: "success" },
+                });
             } else {
                 setError(response.message || "An unknown error occurred.");
             }
