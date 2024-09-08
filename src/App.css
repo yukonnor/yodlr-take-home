@@ -45,3 +45,7 @@ form {
 .bg-success .toast-body {
     background-color: #ddede6;
 }
+
+.sidebar {
+    height: 100vh;
+}
